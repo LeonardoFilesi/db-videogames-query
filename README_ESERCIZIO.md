@@ -81,3 +81,14 @@ GROUP BY videogame_id
 ORDER BY COUNT(rating) DESC;
 
 ===JOIN===
+1)
+SELECT DISTINCT players.*
+FROM players
+RIGHT JOIN reviews 
+ON players.id = reviews.player_id;
+2)
+SELECT DISTINCT videogame_id
+FROM tournament_videogame
+RIGHT JOIN tournaments
+ON tournament_videogame.tournament_id = tournaments.id
+WHERE year = 2016;
