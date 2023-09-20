@@ -48,6 +48,18 @@ FROM software_houses
 GROUP BY country;
 2)
 SELECT COUNT(id)
+3)
+SELECT COUNT(videogame_id)
+FROM pegi_label_videogame
+GROUP BY pegi_label_id;
+4)
+SELECT DATEPART(year, release_date) AS year, COUNT(name) AS videogame
+FROM videogames
+GROUP BY DATEPART(year,release_date);
+5)
+SELECT COUNT(videogame_id)
+FROM device_videogame
+GROUP BY device_id;
 FROM reviews
 GROUP BY videogame_id;
 3)
