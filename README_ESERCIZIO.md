@@ -92,3 +92,8 @@ FROM tournament_videogame
 RIGHT JOIN tournaments
 ON tournament_videogame.tournament_id = tournaments.id
 WHERE year = 2016;
+3)
+SELECT categories.*
+FROM categories
+RIGHT JOIN category_videogame
+ON category_videogame.category_id = categories.id;
