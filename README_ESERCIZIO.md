@@ -97,3 +97,9 @@ SELECT categories.*
 FROM categories
 RIGHT JOIN category_videogame
 ON category_videogame.category_id = categories.id;
+4)
+SELECT DISTINCT software_houses.*
+FROM software_houses
+RIGHT JOIN videogames
+ON videogames.software_house_id = software_houses.id
+WHERE DATEPART(year, release_date) > 2020;
