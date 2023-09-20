@@ -103,3 +103,11 @@ FROM software_houses
 RIGHT JOIN videogames
 ON videogames.software_house_id = software_houses.id
 WHERE DATEPART(year, release_date) > 2020;
+5)
+SELECT awards.*
+FROM awards
+RIGHT JOIN award_videogame
+ON award_videogame.award_id = awards.id
+LEFT JOIN videogames
+ON videogames.id = award_videogame.videogame_id;
+6)
