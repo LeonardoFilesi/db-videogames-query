@@ -36,3 +36,7 @@ WHERE rating >= 2 AND rating <= 4;
 SELECT *
 FROM videogames
 WHERE DATEPART(year, release_date) = 2020;
+10)
+SELECT DISTINCT videogame_id
+FROM reviews
+WHERE rating = 5;
