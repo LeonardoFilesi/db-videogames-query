@@ -111,3 +111,15 @@ ON award_videogame.award_id = awards.id
 LEFT JOIN videogames
 ON videogames.id = award_videogame.videogame_id;
 6)
+SELECT DISTINCT categories.name, pegi_labels.name
+FROM reviews
+JOIN category_videogame 
+ON reviews.videogame_id = category_videogame.videogame_id
+JOIN categories 
+ON categories.id = category_videogame.category_id
+INNER JOIN pegi_label_videogame
+ON pegi_label_videogame.videogame_id = category_videogame.videogame_id
+JOIN pegi_labels 
+ON pegi_labels.id = pegi_label_videogame.pegi_label_id
+WHERE rating IN(4,5);
+(INCORRETTO, risultato '130', dovrebbe essere '3363')
