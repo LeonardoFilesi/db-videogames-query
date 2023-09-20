@@ -40,3 +40,13 @@ WHERE DATEPART(year, release_date) = 2020;
 SELECT DISTINCT videogame_id
 FROM reviews
 WHERE rating = 5;
+
+===GROUP BY===
+1)
+SELECT COUNT(id)
+FROM software_houses
+GROUP BY country;
+2)
+SELECT COUNT(id)
+FROM reviews
+GROUP BY videogame_id;
