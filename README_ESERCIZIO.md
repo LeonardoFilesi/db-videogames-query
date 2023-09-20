@@ -50,3 +50,7 @@ GROUP BY country;
 SELECT COUNT(id)
 FROM reviews
 GROUP BY videogame_id;
+3)
+SELECT COUNT(videogame_id)
+FROM pegi_label_videogame
+GROUP BY pegi_label_id;
