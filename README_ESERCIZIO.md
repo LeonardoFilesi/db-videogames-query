@@ -125,3 +125,12 @@ INNER JOIN pegi_label_videogame plv ON plv.videogame_id = v.id
 INNER JOIN pegi_labels pl ON pl.id = plv.pegi_label_id
 INNER JOIN reviews r ON r.videogame_id = v.id
 WHERE r.rating >= 4;
+9)
+SELECT p.name, p.lastname, p.nickname
+FROM players p
+INNER JOIN player_tournament pt ON p.id = pt.player_id
+INNER JOIN tournaments t ON pt.tournament_id = t.id
+INNER JOIN tournament_videogame tv ON t.id = tv.tournament_id
+INNER JOIN award_videogame av ON tv.videogame_id = av.videogame_id
+INNER JOIN awards a ON av.award_id = a.id
+WHERE t.year = 2019 AND a.name='Gioco più atteso' AND av.year = 2018;
