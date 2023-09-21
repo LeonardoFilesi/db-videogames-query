@@ -97,6 +97,12 @@ SELECT categories.*
 FROM categories
 RIGHT JOIN category_videogame
 ON category_videogame.category_id = categories.id;
+(ALTERNATIVA)
+SELECT v.id AS videogame_id, v.name AS videogame_name, v.release_date, c.id AS category_id, c.name AS category_name 
+FROM videogames v
+INNER JOIN category_videogame cv ON v.id = cv.videogame_id
+INNER JOIN categories c ON cv.category_id = c.id
+ORDER BY videogame_id
 4)
 SELECT DISTINCT software_houses.*
 FROM software_houses
@@ -111,15 +117,11 @@ ON award_videogame.award_id = awards.id
 LEFT JOIN videogames
 ON videogames.id = award_videogame.videogame_id;
 6)
-SELECT DISTINCT categories.name, pegi_labels.name
-FROM reviews
-JOIN category_videogame 
-ON reviews.videogame_id = category_videogame.videogame_id
-JOIN categories 
-ON categories.id = category_videogame.category_id
-INNER JOIN pegi_label_videogame
-ON pegi_label_videogame.videogame_id = category_videogame.videogame_id
-JOIN pegi_labels 
-ON pegi_labels.id = pegi_label_videogame.pegi_label_id
-WHERE rating IN(4,5);
-(INCORRETTO, risultato '130', dovrebbe essere '3363')
+SELECT DISTINCT v.name AS videogame_name, c.name AS category_name, pl.name AS pegi_label
+FROM videogames v
+INNER JOIN category_videogame cv ON v.id = cv.videogame_id
+INNER JOIN categories c ON cv.category_id = c.id
+INNER JOIN pegi_label_videogame plv ON plv.videogame_id = v.id
+INNER JOIN pegi_labels pl ON pl.id = plv.pegi_label_id
+INNER JOIN reviews r ON r.videogame_id = v.id
+WHERE r.rating >= 4;
